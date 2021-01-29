@@ -82,7 +82,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="sub-total">$000</p>
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="VAT">$00</p>
                     </div>
                 </div>
                 <hr>
@@ -100,7 +100,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="grandTotal">$000</p>
                     </div>
                 </div>
             </div>
@@ -115,6 +115,7 @@
     <script src="https://kit.fontawesome.com/f9d43deb74.js" crossorigin="anonymous"></script>
 
     <script>
+        // update price & quantity of ticket
         function updateQuantityPrice (ticket, ticketIncrease){
             const inputNum = document.getElementById(ticket + '-input');
             const inputValue = parseInt(inputNum.value);
@@ -134,6 +135,28 @@
                 ticketTotal = newInputValue * 100;
             }
             document.getElementById(ticket + '-ticket').innerText =  ticketTotal;
+
+            priceCalculation();
+        }
+        // grandtotal part
+        function priceCalculation (){
+            const firstClassInput = convertToNum('firstClass');
+            const economyClassInput = convertToNum('economyClass');
+
+            const subtotal = firstClassInput  * 150 + economyClassInput * 100;
+            document.getElementById('sub-total').innerText = '$' + subtotal;
+
+            const Vat = Math.round(subtotal * 0.10);
+            document.getElementById('VAT').innerText = '$' + Vat;
+
+            const grandTotal = subtotal + Vat ;
+            document.getElementById('grandTotal').innerText = '$' + grandTotal;
+        }
+        // convert Value to Number
+        function convertToNum (ticket){
+            const ticketType = document.getElementById(ticket + '-input');
+            const ticketInput = parseInt(ticketType.value);
+            return ticketInput;
         }
     </script>
 
