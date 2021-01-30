@@ -124,7 +124,7 @@
                 newInputValue = inputValue - 1  ;
             }
             document.getElementById(ticket + '-input').value = newInputValue;
-
+            // total calculation
             const firstClassInput = convertToNum('firstClass');
             const economyClassInput = convertToNum('economyClass');
 
@@ -143,16 +143,17 @@
             const ticketInput = parseInt(ticketType.value);
             return ticketInput;
         }
-        // booked button
+        // Alert box button
         function alertBox(){
             const firstClassInput = convertToNum('firstClass');
             const economyClassInput = convertToNum('economyClass');
             const firstText = firstClassInput + ' First class Cruise Queen ticket, '
             const secondText = economyClassInput + ' Economy class Cruise Queen ticket.\n'
-            const subtotal = firstClassInput  * 150 + economyClassInput * 100;
-            const totalText = 'Total Amount is: ' + '$' + subtotal;
+            const withVat = (firstClassInput  * 150 + economyClassInput * 100) * 0.10;
+            const total = (firstClassInput  * 150 + economyClassInput * 100) + withVat;
+            const totalText = 'Total Amount is: ' + '$' + total;
             const msg = '\nDo you want to confirm?';
-            if( firstClassInput > 0 || economyClassInput > 0){
+            if( firstClassInput > 0){
                 alert('You have select: ' + firstText + secondText + totalText + msg);
             }
             else{
