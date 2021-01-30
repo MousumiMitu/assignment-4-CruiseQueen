@@ -147,8 +147,8 @@
         function alertBox(){
             const firstClassInput = convertToNum('firstClass');
             const economyClassInput = convertToNum('economyClass');
-            const firstText = firstClassInput + ' First class Cruise Queen ticket, '
-            const secondText = economyClassInput + ' Economy class Cruise Queen ticket.\n'
+            const firstText = firstClassInput + ' First class ticket, '
+            const secondText = economyClassInput + ' Economy class ticket.\n'
             const withVat = (firstClassInput  * 150 + economyClassInput * 100) * 0.10;
             const total = (firstClassInput  * 150 + economyClassInput * 100) + withVat;
             const totalText = 'Total Amount is: ' + '$' + total;
