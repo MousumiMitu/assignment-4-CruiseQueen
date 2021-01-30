@@ -57,7 +57,7 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class ($<span id="firstClass-ticket">150</span>) </label>
+                    <label for="">First Class ($150) </label>
                     <input id="firstClass-input" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
@@ -68,7 +68,7 @@
             
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($<span id="economyClass-ticket">100</span>)</label>
+                    <label for="">Economy ($100)</label>
                     <input id="economyClass-input" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
@@ -104,11 +104,9 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button onclick="alertBox()" class="btn-style">Book Now</button>
         </div>
     </main>
-
-    <!--Thank You-->
 
     <!--JavaScript start here-->
     <!--Font Awesome kit-->
@@ -117,8 +115,7 @@
     <script>
         // update price & quantity of ticket
         function updateQuantityPrice (ticket, ticketIncrease){
-            const inputNum = document.getElementById(ticket + '-input');
-            const inputValue = parseInt(inputNum.value);
+            const inputValue = convertToNum (ticket);
             let newInputValue = inputValue;
             if (ticketIncrease == true){
                 newInputValue = inputValue + 1;
@@ -126,20 +123,8 @@
             else if (ticketIncrease == false && inputValue > 0){
                 newInputValue = inputValue - 1  ;
             }
-            inputNum.value = newInputValue;
-            let ticketTotal = 0;
-            if (ticket == 'firstClass'){
-                ticketTotal = newInputValue * 150;
-            }
-            else if (ticket == 'economyClass'){
-                ticketTotal = newInputValue * 100;
-            }
-            document.getElementById(ticket + '-ticket').innerText =  ticketTotal;
+            document.getElementById(ticket + '-input').value = newInputValue;
 
-            priceCalculation();
-        }
-        // grandtotal part
-        function priceCalculation (){
             const firstClassInput = convertToNum('firstClass');
             const economyClassInput = convertToNum('economyClass');
 
@@ -151,12 +136,28 @@
 
             const grandTotal = subtotal + Vat ;
             document.getElementById('grandTotal').innerText = '$' + grandTotal;
-        }
+        } 
         // convert Value to Number
         function convertToNum (ticket){
             const ticketType = document.getElementById(ticket + '-input');
             const ticketInput = parseInt(ticketType.value);
             return ticketInput;
+        }
+        // booked button
+        function alertBox(){
+            const firstClassInput = convertToNum('firstClass');
+            const economyClassInput = convertToNum('economyClass');
+            const firstText = firstClassInput + ' First class Cruise Queen ticket, '
+            const secondText = economyClassInput + ' Economy class Cruise Queen ticket.\n'
+            const subtotal = firstClassInput  * 150 + economyClassInput * 100;
+            const totalText = 'Total Amount is: ' + '$' + subtotal;
+            const msg = '\nDo you want to confirm?';
+            if( firstClassInput > 0 || economyClassInput > 0){
+                alert('You have select: ' + firstText + secondText + totalText + msg);
+            }
+            else{
+                alert('select the ticket first !!');
+            }
         }
     </script>
 

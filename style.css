@@ -60,7 +60,7 @@ a.active {
 .booking-form {
   background-color: #fff;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   float: right;
   width: 65%;
@@ -123,12 +123,12 @@ a.active {
   justify-content: space-between;
 }
 .fas {
-  color: #e4545b;
+  color: #ee7178;
   font-size: 1.4rem;
   background: white;
   padding: 2px;
 }
 .btn-color {
   outline: none;
-  border: 1px solid rgb(240, 213, 213);
+  border: none;
 }
