@@ -117,6 +117,7 @@ a.active {
   color: #fff;
   font-weight: 500;
   background-color: #e33741;
+  outline: none;
 }
 .amount {
   display: flex;
